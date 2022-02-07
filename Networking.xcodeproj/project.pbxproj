@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		36B0896927B1378B008080E0 /* LoadingLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 36B0896827B1378B008080E0 /* LoadingLibrary */; };
+		36B0896E27B13906008080E0 /* LoaderManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B0896D27B13906008080E0 /* LoaderManagement.swift */; };
 		EF9876C3263CC3F000E7C3EE /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; };
 		EF9876C8263CC3F000E7C3EE /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876C7263CC3F000E7C3EE /* NetworkingTests.swift */; };
 		EF9876CA263CC3F000E7C3EE /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = EF9876BC263CC3F000E7C3EE /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -59,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		36B0896D27B13906008080E0 /* LoaderManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderManagement.swift; sourceTree = "<group>"; };
 		EF9876B9263CC3F000E7C3EE /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF9876BC263CC3F000E7C3EE /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		EF9876BD263CC3F000E7C3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				EF9876F0263CC42C00E7C3EE /* Request.swift */,
 				EF9876F5263CC43F00E7C3EE /* RestClient.swift */,
 				EF9876FA263CC45000E7C3EE /* Weak.swift */,
+				36B0896D27B13906008080E0 /* LoaderManagement.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF9876F6263CC43F00E7C3EE /* RestClient.swift in Sources */,
+				36B0896E27B13906008080E0 /* LoaderManagement.swift in Sources */,
 				EF9876F1263CC42C00E7C3EE /* Request.swift in Sources */,
 				EF9876FB263CC45000E7C3EE /* Weak.swift in Sources */,
 			);
