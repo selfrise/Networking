@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LoadingLibrary",
+        "repositoryURL": "https://gitlab.kocsistem.com.tr/oneframe-mobile/ios/loading",
+        "state": {
+          "branch": "swiftPackageManager",
+          "revision": "ce6c5da56fa711b9c98c2afdcbad263d40ec5b3d",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

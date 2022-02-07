@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36B0896927B1378B008080E0 /* LoadingLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 36B0896827B1378B008080E0 /* LoadingLibrary */; };
 		EF9876C3263CC3F000E7C3EE /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; };
 		EF9876C8263CC3F000E7C3EE /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876C7263CC3F000E7C3EE /* NetworkingTests.swift */; };
 		EF9876CA263CC3F000E7C3EE /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = EF9876BC263CC3F000E7C3EE /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -85,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36B0896927B1378B008080E0 /* LoadingLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +235,9 @@
 			dependencies = (
 			);
 			name = Networking;
+			packageProductDependencies = (
+				36B0896827B1378B008080E0 /* LoadingLibrary */,
+			);
 			productName = Networking;
 			productReference = EF9876B9263CC3F000E7C3EE /* Networking.framework */;
 			productType = "com.apple.product-type.framework";
@@ -304,6 +309,9 @@
 				Base,
 			);
 			mainGroup = EF9876AF263CC3F000E7C3EE;
+			packageReferences = (
+				36B0896727B1378B008080E0 /* XCRemoteSwiftPackageReference "loading" */,
+			);
 			productRefGroup = EF9876BA263CC3F000E7C3EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -692,6 +700,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		36B0896727B1378B008080E0 /* XCRemoteSwiftPackageReference "loading" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://gitlab.kocsistem.com.tr/oneframe-mobile/ios/loading";
+			requirement = {
+				branch = swiftPackageManager;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		36B0896827B1378B008080E0 /* LoadingLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36B0896727B1378B008080E0 /* XCRemoteSwiftPackageReference "loading" */;
+			productName = LoadingLibrary;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF9876B0263CC3F000E7C3EE /* Project object */;
 }
