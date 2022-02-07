@@ -12,7 +12,7 @@ let package = Package(
             targets: ["Networking"]),
     ],
     dependencies: [
-            .package(url: "https://gitlab.kocsistem.com.tr/oneframe-mobile/ios/loading", from: "2.0")
+            .package(url: "https://gitlab.kocsistem.com.tr/oneframe-mobile/ios/loading", from: "2.0.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
