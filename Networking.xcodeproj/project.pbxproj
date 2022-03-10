@@ -3,12 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		155AC6E227DA6C4F0034D1F7 /* SwiftLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 155AC6E327DA6C4F0034D1F7 /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
+			buildPhases = (
+				155AC6EA27DA6C7D0034D1F7 /* SwiftLint Configuration Run Yaml */,
+			);
+			dependencies = (
+			);
+			name = SwiftLint;
+			productName = SwiftLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		36B0896927B1378B008080E0 /* LoadingLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 36B0896827B1378B008080E0 /* LoadingLibrary */; };
-		36B0896E27B13906008080E0 /* LoaderManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B0896D27B13906008080E0 /* LoaderManagement.swift */; };
 		EF9876C3263CC3F000E7C3EE /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; };
 		EF9876C8263CC3F000E7C3EE /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876C7263CC3F000E7C3EE /* NetworkingTests.swift */; };
 		EF9876CA263CC3F000E7C3EE /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = EF9876BC263CC3F000E7C3EE /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -29,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		155AC6EB27DA6F760034D1F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF9876B0263CC3F000E7C3EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 155AC6E227DA6C4F0034D1F7;
+			remoteInfo = SwiftLint;
+		};
 		EF9876C4263CC3F000E7C3EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EF9876B0263CC3F000E7C3EE /* Project object */;
@@ -60,7 +79,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		36B0896D27B13906008080E0 /* LoaderManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderManagement.swift; sourceTree = "<group>"; };
 		EF9876B9263CC3F000E7C3EE /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF9876BC263CC3F000E7C3EE /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		EF9876BD263CC3F000E7C3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,7 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36B0896927B1378B008080E0 /* LoadingLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +157,6 @@
 				EF9876F0263CC42C00E7C3EE /* Request.swift */,
 				EF9876F5263CC43F00E7C3EE /* RestClient.swift */,
 				EF9876FA263CC45000E7C3EE /* Weak.swift */,
-				36B0896D27B13906008080E0 /* LoaderManagement.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -236,10 +252,10 @@
 			buildRules = (
 			);
 			dependencies = (
+				155AC6EC27DA6F760034D1F7 /* PBXTargetDependency */,
 			);
 			name = Networking;
 			packageProductDependencies = (
-				36B0896827B1378B008080E0 /* LoadingLibrary */,
 			);
 			productName = Networking;
 			productReference = EF9876B9263CC3F000E7C3EE /* Networking.framework */;
@@ -291,6 +307,9 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					155AC6E227DA6C4F0034D1F7 = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					EF9876B8263CC3F000E7C3EE = {
 						CreatedOnToolsVersion = 12.4;
 						LastSwiftMigration = 1240;
@@ -313,7 +332,6 @@
 			);
 			mainGroup = EF9876AF263CC3F000E7C3EE;
 			packageReferences = (
-				36B0896727B1378B008080E0 /* XCRemoteSwiftPackageReference "loading" */,
 			);
 			productRefGroup = EF9876BA263CC3F000E7C3EE /* Products */;
 			projectDirPath = "";
@@ -322,6 +340,7 @@
 				EF9876B8263CC3F000E7C3EE /* Networking */,
 				EF9876C1263CC3F000E7C3EE /* NetworkingTests */,
 				EF9876D8263CC40800E7C3EE /* NetworkingExample */,
+				155AC6E227DA6C4F0034D1F7 /* SwiftLint */,
 			);
 		};
 /* End PBXProject section */
@@ -353,13 +372,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		155AC6EA27DA6C7D0034D1F7 /* SwiftLint Configuration Run Yaml */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Configuration Run Yaml";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    # Relative path from the .xcodeproj which contains this script\n    swiftlint lint –config \"${SRCROOT}/.swiftlint.yml\"\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EF9876B5263CC3F000E7C3EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EF9876F6263CC43F00E7C3EE /* RestClient.swift in Sources */,
-				36B0896E27B13906008080E0 /* LoaderManagement.swift in Sources */,
 				EF9876F1263CC42C00E7C3EE /* Request.swift in Sources */,
 				EF9876FB263CC45000E7C3EE /* Weak.swift in Sources */,
 			);
@@ -389,6 +428,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		155AC6EC27DA6F760034D1F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 155AC6E227DA6C4F0034D1F7 /* SwiftLint */;
+			targetProxy = 155AC6EB27DA6F760034D1F7 /* PBXContainerItemProxy */;
+		};
 		EF9876C5263CC3F000E7C3EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EF9876B8263CC3F000E7C3EE /* Networking */;
@@ -413,6 +457,22 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		155AC6E427DA6C4F0034D1F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		155AC6E527DA6C4F0034D1F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		EF9876CB263CC3F000E7C3EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -546,6 +606,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Networking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -573,6 +634,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Networking/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -667,6 +729,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		155AC6E327DA6C4F0034D1F7 /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				155AC6E427DA6C4F0034D1F7 /* Debug */,
+				155AC6E527DA6C4F0034D1F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EF9876B3263CC3F000E7C3EE /* Build configuration list for PBXProject "Networking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -704,25 +775,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		36B0896727B1378B008080E0 /* XCRemoteSwiftPackageReference "loading" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://gitlab.kocsistem.com.tr/oneframe-mobile/ios/loading";
-			requirement = {
-				branch = swiftPackageManager;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		36B0896827B1378B008080E0 /* LoadingLibrary */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 36B0896727B1378B008080E0 /* XCRemoteSwiftPackageReference "loading" */;
-			productName = LoadingLibrary;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EF9876B0263CC3F000E7C3EE /* Project object */;
 }
