@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 private let tag = "RestClient"
 private func printTagged(_ string: String) {
@@ -32,24 +31,28 @@ public class RestClient {
     
     public static let `default`: RestClient = RestClient()
     
-    private static var baseUrl: String = ""
+    private static var baseUrl = ""
     
     private static let encoder: JSONEncoder = {
         let encoder = JSONEncoder()
         return encoder
     }()
     
-    static let decoder: JSONDecoder = {
+    private static let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         return decoder
     }()
     
     private let urlSession: URLSession
     private var taskPool: [String : Weak<URLSessionTask>] = [:]
-    static var header: [String: String]?
+    private static var header: [String: String]?
     
     private init() {
-        self.urlSession = URLSession.init(configuration: .default, delegate: nil, delegateQueue: .main)
+        self.urlSession = URLSession(
+            configuration: .default,
+            delegate: nil,
+            delegateQueue: .main
+        )
     }
     
     init(session: URLSession) {
@@ -57,18 +60,26 @@ public class RestClient {
     }
     
     @discardableResult
-    private func makeRequest<Q: Request, S: Decodable>(identifier: String?, request: Q, body: Data?, completionHandler: @escaping (S?, Error?) -> Void) -> URLSessionTask? {
+    private func makeRequest<Q: Request, S: Decodable>(
+        identifier: String?,
+        request: Q,
+        body: Data?,
+        completionHandler: @escaping (S?, Error?) -> Void
+    ) -> URLSessionTask? {
         
-    
-        var baseUrl: String = ""
-        if request is GenericRequest  {
-            let genericRequest = request as! GenericRequest
-            baseUrl = genericRequest.baseUrl != nil ? genericRequest.baseUrl! : RestClient.baseUrl
+        
+        var baseUrl = ""
+        if let request = request as? GenericRequest,
+           let _baseUrl = request.baseUrl {
+            baseUrl = _baseUrl
         } else {
             baseUrl = RestClient.baseUrl
         }
         
-        guard let url = URL(string: baseUrl + request.constructedURL) else {
+        var urlComponents = URLComponents(string: baseUrl)
+        urlComponents?.queryItems = request.queryParameters
+        
+        guard let url = urlComponents?.url else {
             completionHandler(nil,.corruptedURL)
             return nil
         }
@@ -79,32 +90,37 @@ public class RestClient {
         urlRequest.timeoutInterval = 30.0
         urlRequest.allHTTPHeaderFields = RestClient.header
         urlRequest.setValue(request.contentType.rawValue, forHTTPHeaderField: "Content-Type")
-        if request.headerParameters.count > 0 {
+        if !request.headerParameters.isEmpty {
             for parameters in request.headerParameters {
                 urlRequest.setValue(parameters.value, forHTTPHeaderField: parameters.name)
             }
         }
         
-        self.debugRequestAndHeader(request: request, urlRequest: urlRequest, identifier: identifier, body: body)
+        debugRequestAndHeader(
+            request: request,
+            urlRequest: urlRequest,
+            identifier: identifier,
+            body: body
+        )
         
         let task = urlSession.dataTask(with: urlRequest) { [weak self] (data, response, error) in
             let _ = identifier.map { self?.taskPool.removeValue(forKey: $0) }
             
-            #if DEBUG
-            printTagged("🟧🟧🟧🟧🟧🟧 <----------Response----------> 🟧🟧🟧🟧🟧🟧")
+#if DEBUG
+            printTagged("✅ <----------Response----------> ✅")
             identifier.map { printTagged("Identifier: " + $0) }
             printTagged("Method: " + request.method.rawValue)
-            printTagged("URL: " + RestClient.baseUrl + request.constructedURL)
+            printTagged("URL: " + url.absoluteString)
             
             defer {
-                printTagged("🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧")
+                printTagged("-------------------------------------------------------")
             }
-            #endif
+#endif
             
             if let error = error {
-                #if DEBUG
+#if DEBUG
                 printTagged("🚫Connection Error: " + error.localizedDescription)
-                #endif
+#endif
                 
                 completionHandler(nil, .connection(reason: error))
                 
@@ -112,9 +128,9 @@ public class RestClient {
             }
             
             guard let response = response as? HTTPURLResponse else {
-                #if DEBUG
+#if DEBUG
                 printTagged("🚫     !!!NO RESPONSE!!!     ")
-                #endif
+#endif
                 
                 completionHandler(nil, .other)
                 
@@ -122,26 +138,26 @@ public class RestClient {
             }
             
             if response.statusCode < 200 || response.statusCode >= 400 {
-                #if DEBUG
+#if DEBUG
                 printTagged("🚫HTTP Error: " + String(describing: response.statusCode))
-                #endif
+#endif
                 
                 completionHandler(nil, .http(code: response.statusCode))
             } else {
                 guard let data = data else {
-                    #if DEBUG
+#if DEBUG
                     printTagged("🚫       !!!NO DATA!!!       ")
-                    #endif
+#endif
                     
                     completionHandler(nil, .data(reason: .missing))
                     
                     return
                 }
                 
-                #if DEBUG
-                printTagged("🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧")
+#if DEBUG
+                printTagged("-------------------------------------------------------")
                 printTagged("Response: " + (String(data: data, encoding: .utf8) ?? "CORRUPTED"))
-                #endif
+#endif
                 do {
                     let response = try RestClient.decoder.decode(S.self, from: data)
                     completionHandler(response, nil)
@@ -166,16 +182,27 @@ public class RestClient {
     }
     
     @discardableResult
-    public func makeRequest<Q: Request & Encodable, S: Decodable>(request: Q, completionHandler: @escaping (S?, Error?) -> Void) -> URLSessionTask? {
+    public func makeRequest<Q: Request & Encodable, S: Decodable>(
+        request: Q,
+        completionHandler: @escaping (S?, Error?) -> Void
+    ) -> URLSessionTask? {
         do {
             if request.method == .get{
-                return makeRequest(identifier: nil, request: request, body: nil, completionHandler: completionHandler)
+                return makeRequest(
+                    identifier: nil,
+                    request: request,
+                    body: nil,
+                    completionHandler: completionHandler
+                )
             }else {
                 let body = try RestClient.encoder.encode(request)
-                return makeRequest(identifier: nil, request: request, body: body, completionHandler: completionHandler)
-                
+                return makeRequest(
+                    identifier: nil,
+                    request: request,
+                    body: body,
+                    completionHandler: completionHandler
+                )
             }
-
         } catch let error as EncodingError {
             completionHandler(nil,.data(reason: .write(underlying: error)))
             return nil
@@ -188,8 +215,6 @@ public class RestClient {
     func cancelRequest(identifier: String) {
         taskPool[identifier]?.object?.cancel()
     }
-    
-    
 }
 
 extension RestClient {
@@ -219,31 +244,38 @@ extension RestClient {
     class func removeRequestHeaderForKey(key: String) {
         RestClient.header?.removeValue(forKey: key)
     }
-
+    
 }
 
-extension RestClient {
+private extension RestClient {
     
-    private func debugRequestAndHeader<Q: Request>(request: Q, urlRequest:URLRequest, identifier: String?, body: Data?) {
-        #if DEBUG
-        printTagged("🔶🔶🔶🔶🔶 ----------Request---------- 🔶🔶🔶🔶🔶")
+    func debugRequestAndHeader<Q: Request>(
+        request: Q,
+        urlRequest: URLRequest,
+        identifier: String?,
+        body: Data?
+    ) {
+#if DEBUG
+        printTagged("✅ ----------Request---------- ✅")
         identifier.map { printTagged("Identifier: " + $0) }
         printTagged("Method: " + request.method.rawValue + " 🚀")
-        printTagged("URL: " + RestClient.baseUrl + request.constructedURL)
+        printTagged("URL: " + (urlRequest.url?.absoluteString ?? "-"))
+        body.map { String(data: $0, encoding: .utf8).map { printTagged("Body: " + $0) } }
+        
         var allHTTPHeaderFields = urlRequest.allHTTPHeaderFields
         
-        if request.headerParameters.count > 0 {
+        if !request.headerParameters.isEmpty {
             for parameters in request.headerParameters {
                 allHTTPHeaderFields?[parameters.name] = parameters.value
             }
         }
-        let header1 = allHTTPHeaderFields?.reduce("", { (result, parameter) -> String in
+        let header = allHTTPHeaderFields?.reduce("", { (result, parameter) -> String in
             return result + parameter.key + "=" + parameter.value + ", "
-        })
-        let header = header1 ?? ""
+        }) ?? ""
+        
         printTagged("Header: " + header)
         body.map { String(data: $0, encoding: .utf8).map { printTagged("Body: " + $0) } }
-        printTagged("🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶🔶")
-        #endif
+        printTagged("-------------------------------------------------------")
+#endif
     }
 }
