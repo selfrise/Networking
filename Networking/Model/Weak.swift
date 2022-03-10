@@ -5,7 +5,6 @@
 //  Created by OO E on 1.05.2021.
 //
 
-
 import Foundation
 
 class Weak<Object: AnyObject> {

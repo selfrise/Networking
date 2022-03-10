@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -21,9 +21,14 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1508441627DA855B006EC139 /* MyWordsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508441527DA855B006EC139 /* MyWordsObject.swift */; };
+		1508442127DA897B006EC139 /* MyWordsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508442027DA897B006EC139 /* MyWordsServiceProtocol.swift */; };
+		15C7C69B27DA934E00F55DC3 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; platformFilter = ios; };
+		15C7C69C27DA934E00F55DC3 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		15C7C6A427DA942F00F55DC3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C7C6A327DA942F00F55DC3 /* Response.swift */; };
+		15C7C6A627DA948F00F55DC3 /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = EF9876BC263CC3F000E7C3EE /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF9876C3263CC3F000E7C3EE /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; };
 		EF9876C8263CC3F000E7C3EE /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876C7263CC3F000E7C3EE /* NetworkingTests.swift */; };
-		EF9876CA263CC3F000E7C3EE /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = EF9876BC263CC3F000E7C3EE /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF9876DC263CC40800E7C3EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876DB263CC40800E7C3EE /* AppDelegate.swift */; };
 		EF9876DE263CC40800E7C3EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876DD263CC40800E7C3EE /* SceneDelegate.swift */; };
 		EF9876E0263CC40800E7C3EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876DF263CC40800E7C3EE /* ContentView.swift */; };
@@ -35,9 +40,6 @@
 		EF9876FB263CC45000E7C3EE /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876FA263CC45000E7C3EE /* Weak.swift */; };
 		EF987701263CC54000E7C3EE /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF987700263CC54000E7C3EE /* ContentViewModel.swift */; };
 		EF98770A263CC5C900E7C3EE /* MyWordsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF987709263CC5C900E7C3EE /* MyWordsRequest.swift */; };
-		EF987713263CC71200E7C3EE /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF987712263CC71200E7C3EE /* BaseResponse.swift */; };
-		EF98775B263CCBC400E7C3EE /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; };
-		EF98775C263CCBC400E7C3EE /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,14 +50,14 @@
 			remoteGlobalIDString = 155AC6E227DA6C4F0034D1F7;
 			remoteInfo = SwiftLint;
 		};
-		EF9876C4263CC3F000E7C3EE /* PBXContainerItemProxy */ = {
+		15C7C69D27DA934E00F55DC3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EF9876B0263CC3F000E7C3EE /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EF9876B8263CC3F000E7C3EE;
 			remoteInfo = Networking;
 		};
-		EF98775D263CCBC400E7C3EE /* PBXContainerItemProxy */ = {
+		EF9876C4263CC3F000E7C3EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EF9876B0263CC3F000E7C3EE /* Project object */;
 			proxyType = 1;
@@ -65,13 +67,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		EF98775F263CCBC400E7C3EE /* Embed Frameworks */ = {
+		15C7C69F27DA934E00F55DC3 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EF98775C263CCBC400E7C3EE /* Networking.framework in Embed Frameworks */,
+				15C7C69C27DA934E00F55DC3 /* Networking.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +81,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1508441527DA855B006EC139 /* MyWordsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordsObject.swift; sourceTree = "<group>"; };
+		1508442027DA897B006EC139 /* MyWordsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordsServiceProtocol.swift; sourceTree = "<group>"; };
+		15C7C6A327DA942F00F55DC3 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		EF9876B9263CC3F000E7C3EE /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF9876BC263CC3F000E7C3EE /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		EF9876BD263CC3F000E7C3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,7 +103,6 @@
 		EF9876FA263CC45000E7C3EE /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		EF987700263CC54000E7C3EE /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		EF987709263CC5C900E7C3EE /* MyWordsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordsRequest.swift; sourceTree = "<group>"; };
-		EF987712263CC71200E7C3EE /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,13 +125,109 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF98775B263CCBC400E7C3EE /* Networking.framework in Frameworks */,
+				15C7C69B27DA934E00F55DC3 /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1508441727DA85F8006EC139 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EF9876E1263CC40900E7C3EE /* Assets.xcassets */,
+				EF9876DB263CC40800E7C3EE /* AppDelegate.swift */,
+				EF9876DD263CC40800E7C3EE /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1508441827DA8605006EC139 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				EF9876E3263CC40900E7C3EE /* Preview Content */,
+				EF9876E6263CC40900E7C3EE /* LaunchScreen.storyboard */,
+				EF9876E9263CC40900E7C3EE /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		1508441927DA8614006EC139 /* MainContentView */ = {
+			isa = PBXGroup;
+			children = (
+				EF9876FF263CC53300E7C3EE /* VM */,
+				EF9876DF263CC40800E7C3EE /* ContentView.swift */,
+			);
+			path = MainContentView;
+			sourceTree = "<group>";
+		};
+		1508441A27DA8624006EC139 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1508441E27DA8953006EC139 /* MyWords */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1508441B27DA86F0006EC139 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				EF9876F0263CC42C00E7C3EE /* Request.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		1508441C27DA86F8006EC139 /* RestClient */ = {
+			isa = PBXGroup;
+			children = (
+				EF9876F5263CC43F00E7C3EE /* RestClient.swift */,
+			);
+			path = RestClient;
+			sourceTree = "<group>";
+		};
+		1508441D27DA8710006EC139 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EF9876FA263CC45000E7C3EE /* Weak.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1508441E27DA8953006EC139 /* MyWords */ = {
+			isa = PBXGroup;
+			children = (
+				EF987708263CC54500E7C3EE /* Request */,
+				1508441F27DA895A006EC139 /* Response */,
+				1508442027DA897B006EC139 /* MyWordsServiceProtocol.swift */,
+			);
+			path = MyWords;
+			sourceTree = "<group>";
+		};
+		1508441F27DA895A006EC139 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				1508441527DA855B006EC139 /* MyWordsObject.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		15C7C6A227DA941E00F55DC3 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				15C7C6A327DA942F00F55DC3 /* Response.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		15C7C6A527DA947700F55DC3 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				EF9876BC263CC3F000E7C3EE /* Networking.h */,
+				EF9876BD263CC3F000E7C3EE /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		EF9876AF263CC3F000E7C3EE = {
 			isa = PBXGroup;
 			children = (
@@ -152,11 +252,11 @@
 		EF9876BB263CC3F000E7C3EE /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				EF9876BC263CC3F000E7C3EE /* Networking.h */,
-				EF9876BD263CC3F000E7C3EE /* Info.plist */,
-				EF9876F0263CC42C00E7C3EE /* Request.swift */,
-				EF9876F5263CC43F00E7C3EE /* RestClient.swift */,
-				EF9876FA263CC45000E7C3EE /* Weak.swift */,
+				1508441C27DA86F8006EC139 /* RestClient */,
+				1508441B27DA86F0006EC139 /* Request */,
+				15C7C6A227DA941E00F55DC3 /* Response */,
+				1508441D27DA8710006EC139 /* Model */,
+				15C7C6A527DA947700F55DC3 /* Resource */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -173,16 +273,10 @@
 		EF9876DA263CC40800E7C3EE /* NetworkingExample */ = {
 			isa = PBXGroup;
 			children = (
-				EF987711263CC70600E7C3EE /* Response */,
-				EF987708263CC54500E7C3EE /* Request */,
-				EF9876FF263CC53300E7C3EE /* VM */,
-				EF9876DB263CC40800E7C3EE /* AppDelegate.swift */,
-				EF9876DD263CC40800E7C3EE /* SceneDelegate.swift */,
-				EF9876DF263CC40800E7C3EE /* ContentView.swift */,
-				EF9876E1263CC40900E7C3EE /* Assets.xcassets */,
-				EF9876E6263CC40900E7C3EE /* LaunchScreen.storyboard */,
-				EF9876E9263CC40900E7C3EE /* Info.plist */,
-				EF9876E3263CC40900E7C3EE /* Preview Content */,
+				1508441A27DA8624006EC139 /* Network */,
+				1508441927DA8614006EC139 /* MainContentView */,
+				1508441827DA8605006EC139 /* Resource */,
+				1508441727DA85F8006EC139 /* App */,
 			);
 			path = NetworkingExample;
 			sourceTree = "<group>";
@@ -211,14 +305,6 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		EF987711263CC70600E7C3EE /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				EF987712263CC71200E7C3EE /* BaseResponse.swift */,
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
 		EF98775A263CCBC400E7C3EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +319,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF9876CA263CC3F000E7C3EE /* Networking.h in Headers */,
+				15C7C6A627DA948F00F55DC3 /* Networking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,12 +372,12 @@
 				EF9876D5263CC40800E7C3EE /* Sources */,
 				EF9876D6263CC40800E7C3EE /* Frameworks */,
 				EF9876D7263CC40800E7C3EE /* Resources */,
-				EF98775F263CCBC400E7C3EE /* Embed Frameworks */,
+				15C7C69F27DA934E00F55DC3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EF98775E263CCBC400E7C3EE /* PBXTargetDependency */,
+				15C7C69E27DA934E00F55DC3 /* PBXTargetDependency */,
 			);
 			name = NetworkingExample;
 			productName = NetworkingExample;
@@ -398,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C7C6A427DA942F00F55DC3 /* Response.swift in Sources */,
 				EF9876F6263CC43F00E7C3EE /* RestClient.swift in Sources */,
 				EF9876F1263CC42C00E7C3EE /* Request.swift in Sources */,
 				EF9876FB263CC45000E7C3EE /* Weak.swift in Sources */,
@@ -418,10 +505,11 @@
 			files = (
 				EF987701263CC54000E7C3EE /* ContentViewModel.swift in Sources */,
 				EF9876DC263CC40800E7C3EE /* AppDelegate.swift in Sources */,
+				1508441627DA855B006EC139 /* MyWordsObject.swift in Sources */,
 				EF9876DE263CC40800E7C3EE /* SceneDelegate.swift in Sources */,
-				EF987713263CC71200E7C3EE /* BaseResponse.swift in Sources */,
 				EF98770A263CC5C900E7C3EE /* MyWordsRequest.swift in Sources */,
 				EF9876E0263CC40800E7C3EE /* ContentView.swift in Sources */,
+				1508442127DA897B006EC139 /* MyWordsServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,15 +521,16 @@
 			target = 155AC6E227DA6C4F0034D1F7 /* SwiftLint */;
 			targetProxy = 155AC6EB27DA6F760034D1F7 /* PBXContainerItemProxy */;
 		};
+		15C7C69E27DA934E00F55DC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = EF9876B8263CC3F000E7C3EE /* Networking */;
+			targetProxy = 15C7C69D27DA934E00F55DC3 /* PBXContainerItemProxy */;
+		};
 		EF9876C5263CC3F000E7C3EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EF9876B8263CC3F000E7C3EE /* Networking */;
 			targetProxy = EF9876C4263CC3F000E7C3EE /* PBXContainerItemProxy */;
-		};
-		EF98775E263CCBC400E7C3EE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EF9876B8263CC3F000E7C3EE /* Networking */;
-			targetProxy = EF98775D263CCBC400E7C3EE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -604,7 +693,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Networking/Info.plist;
+				INFOPLIST_FILE = Networking/Resource/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -613,7 +702,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ozgun.Networking;
+				PRODUCT_BUNDLE_IDENTIFIER = com.selfrise.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -632,7 +721,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Networking/Info.plist;
+				INFOPLIST_FILE = Networking/Resource/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -641,7 +730,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ozgun.Networking;
+				PRODUCT_BUNDLE_IDENTIFIER = com.selfrise.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -692,14 +781,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"NetworkingExample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"NetworkingExample/Resource/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = NetworkingExample/Info.plist;
+				INFOPLIST_FILE = NetworkingExample/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ozgun.NetworkingExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.selfrise.NetworkingExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -712,14 +801,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"NetworkingExample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"NetworkingExample/Resource/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = NetworkingExample/Info.plist;
+				INFOPLIST_FILE = NetworkingExample/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ozgun.NetworkingExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.selfrise.NetworkingExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
