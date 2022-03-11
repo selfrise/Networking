@@ -12,13 +12,12 @@ struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel
 
     init() {
-        self.viewModel = ContentViewModel()
+        self.viewModel = ContentViewModel(service: MyWordsService())
     }
     
     var body: some View {
         
         VStack {
-            
             Button("Test Request 1") {
                 
                 self.viewModel.getMyWordsList()
@@ -29,11 +28,7 @@ struct ContentView: View {
                 
             }.padding(.all)
             
-            
-            
             Text("Count \(viewModel.count)")
-            
-            
         }
     }
 }

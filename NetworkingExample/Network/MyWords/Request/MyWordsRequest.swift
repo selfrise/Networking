@@ -14,7 +14,7 @@ final class MyWordRequest: Request, Encodable {
     }
     
     var endpoint: String {
-        "/word/myword/0/100"
+        Endpoint.Word.myWords
     }
     
     var method: RequestMethod {
@@ -23,7 +23,7 @@ final class MyWordRequest: Request, Encodable {
     
     var headerParameters: [URLQueryItem] {
         [
-            URLQueryItem(name: "token", value: self.token)
+            URLQueryItem(name: "token", value: token)
         ]
     }
     

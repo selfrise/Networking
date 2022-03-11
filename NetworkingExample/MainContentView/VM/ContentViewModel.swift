@@ -13,14 +13,18 @@ final class ContentViewModel: ObservableObject {
     
     @Published var myWords: [MyWordsObject] = []
     
-    private let myWordsService: MyWordsServiceProtocol = MyWordsService()
+    private let service: MyWordsServiceProtocol
     
     var count : Int {
         myWords.count
     }
     
+    init(service: MyWordsServiceProtocol) {
+        self.service = service
+    }
+    
     func getMyWordsList() {
-        myWordsService.getMyWords { [weak self] words in
+        service.getMyWords { [weak self] words in
             guard let self = self,
                   let words = words else {
                 return
@@ -28,7 +32,6 @@ final class ContentViewModel: ObservableObject {
             self.myWords = words
         } errorBlock: { error in
             print(error)
-            
         }
     }
 }
