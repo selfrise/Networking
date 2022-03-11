@@ -33,16 +33,6 @@ public class RestClient {
     
     private static var baseUrl = ""
     
-    private static let encoder: JSONEncoder = {
-        let encoder = JSONEncoder()
-        return encoder
-    }()
-    
-    private static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        return decoder
-    }()
-    
     private let urlSession: URLSession
     private var taskPool: [String : Weak<URLSessionTask>] = [:]
     private static var header: [String: String]?
@@ -76,7 +66,8 @@ public class RestClient {
             baseUrl = RestClient.baseUrl
         }
         
-        var urlComponents = URLComponents(string: baseUrl)
+        let mainUrl = baseUrl + request.endpoint
+        var urlComponents = URLComponents(string: mainUrl)
         urlComponents?.queryItems = request.queryParameters
         
         guard let url = urlComponents?.url else {
@@ -157,9 +148,10 @@ public class RestClient {
 #if DEBUG
                 printTagged("-------------------------------------------------------")
                 printTagged("Response: " + (String(data: data, encoding: .utf8) ?? "CORRUPTED"))
+                ResourceManager.saveResponseToDevice(data: data, for: request.endpoint)
 #endif
                 do {
-                    let response = try RestClient.decoder.decode(S.self, from: data)
+                    let response = try Coders.decoder.decode(S.self, from: data)
                     completionHandler(response, nil)
                 } catch let error as DecodingError {
                     completionHandler(nil, .data(reason: .read(underlying: error)))
@@ -195,7 +187,7 @@ public class RestClient {
                     completionHandler: completionHandler
                 )
             }else {
-                let body = try RestClient.encoder.encode(request)
+                let body = try Coders.encoder.encode(request)
                 return makeRequest(
                     identifier: nil,
                     request: request,
@@ -234,17 +226,14 @@ extension RestClient {
     class func appendHeaderValue(key: String, value: String) {
         if RestClient.header == nil {
             RestClient.header = [String: String]()
-            RestClient.header![key] = value
-            
-        } else {
-            RestClient.header![key] = value
         }
+
+        RestClient.header?[key] = value
     }
     
     class func removeRequestHeaderForKey(key: String) {
         RestClient.header?.removeValue(forKey: key)
     }
-    
 }
 
 private extension RestClient {

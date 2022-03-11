@@ -18,6 +18,17 @@
 			name = SwiftLint;
 			productName = SwiftLint;
 		};
+		15E40D0227DB2C7000E2A18C /* Copy Mock API Service Response */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 15E40D0327DB2C7000E2A18C /* Build configuration list for PBXAggregateTarget "Copy Mock API Service Response" */;
+			buildPhases = (
+				15E40D0627DB2C7700E2A18C /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Copy Mock API Service Response";
+			productName = "Copy Mock API Service Response";
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -27,6 +38,10 @@
 		15C7C69C27DA934E00F55DC3 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15C7C6A427DA942F00F55DC3 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C7C6A327DA942F00F55DC3 /* Response.swift */; };
 		15C7C6A627DA948F00F55DC3 /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = EF9876BC263CC3F000E7C3EE /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		15E40CF827DB18F600E2A18C /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E40CF727DB18F600E2A18C /* ResourceManager.swift */; };
+		15E40CFB27DB1BD800E2A18C /* Coders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E40CFA27DB1BD800E2A18C /* Coders.swift */; };
+		15E40D0B27DB2EED00E2A18C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E40D0A27DB2EED00E2A18C /* Endpoint.swift */; };
+		15E40D1D27DB356000E2A18C /* ContentViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E40D1C27DB356000E2A18C /* ContentViewModelTests.swift */; };
 		EF9876C3263CC3F000E7C3EE /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; };
 		EF9876C8263CC3F000E7C3EE /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876C7263CC3F000E7C3EE /* NetworkingTests.swift */; };
 		EF9876DC263CC40800E7C3EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876DB263CC40800E7C3EE /* AppDelegate.swift */; };
@@ -57,6 +72,27 @@
 			remoteGlobalIDString = EF9876B8263CC3F000E7C3EE;
 			remoteInfo = Networking;
 		};
+		15E40D0727DB2DAB00E2A18C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF9876B0263CC3F000E7C3EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15E40D0227DB2C7000E2A18C;
+			remoteInfo = "Copy Mock API Service Response";
+		};
+		15E40D0C27DB34B900E2A18C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF9876B0263CC3F000E7C3EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF9876D8263CC40800E7C3EE;
+			remoteInfo = NetworkingExample;
+		};
+		15E40D1627DB351600E2A18C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF9876B0263CC3F000E7C3EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF9876D8263CC40800E7C3EE;
+			remoteInfo = NetworkingExample;
+		};
 		EF9876C4263CC3F000E7C3EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EF9876B0263CC3F000E7C3EE /* Project object */;
@@ -84,6 +120,12 @@
 		1508441527DA855B006EC139 /* MyWordsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordsObject.swift; sourceTree = "<group>"; };
 		1508442027DA897B006EC139 /* MyWordsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordsServiceProtocol.swift; sourceTree = "<group>"; };
 		15C7C6A327DA942F00F55DC3 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		15E40CF727DB18F600E2A18C /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
+		15E40CFA27DB1BD800E2A18C /* Coders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coders.swift; sourceTree = "<group>"; };
+		15E40D0127DB2C1D00E2A18C /* word */ = {isa = PBXFileReference; lastKnownFileType = folder; path = word; sourceTree = "<group>"; };
+		15E40D0A27DB2EED00E2A18C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		15E40D1227DB351600E2A18C /* NetworkingExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15E40D1C27DB356000E2A18C /* ContentViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModelTests.swift; sourceTree = "<group>"; };
 		EF9876B9263CC3F000E7C3EE /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF9876BC263CC3F000E7C3EE /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		EF9876BD263CC3F000E7C3EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,6 +148,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		15E40D0F27DB351600E2A18C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EF9876B6263CC3F000E7C3EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -145,6 +194,7 @@
 		1508441827DA8605006EC139 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				15E40CFF27DB2BBC00E2A18C /* Mock */,
 				EF9876E3263CC40900E7C3EE /* Preview Content */,
 				EF9876E6263CC40900E7C3EE /* LaunchScreen.storyboard */,
 				EF9876E9263CC40900E7C3EE /* Info.plist */,
@@ -164,6 +214,7 @@
 		1508441A27DA8624006EC139 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				15E40D0927DB2EAA00E2A18C /* Endpoint */,
 				1508441E27DA8953006EC139 /* MyWords */,
 			);
 			path = Network;
@@ -228,12 +279,89 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		15E40CF427DB18CF00E2A18C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1508441C27DA86F8006EC139 /* RestClient */,
+				1508441B27DA86F0006EC139 /* Request */,
+				15C7C6A227DA941E00F55DC3 /* Response */,
+				1508441D27DA8710006EC139 /* Model */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		15E40CF527DB18DD00E2A18C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				15E40CF927DB1BCB00E2A18C /* Coders */,
+				15E40CF627DB18ED00E2A18C /* ResourceManager */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		15E40CF627DB18ED00E2A18C /* ResourceManager */ = {
+			isa = PBXGroup;
+			children = (
+				15E40CF727DB18F600E2A18C /* ResourceManager.swift */,
+			);
+			path = ResourceManager;
+			sourceTree = "<group>";
+		};
+		15E40CF927DB1BCB00E2A18C /* Coders */ = {
+			isa = PBXGroup;
+			children = (
+				15E40CFA27DB1BD800E2A18C /* Coders.swift */,
+			);
+			path = Coders;
+			sourceTree = "<group>";
+		};
+		15E40CFF27DB2BBC00E2A18C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				15E40D0027DB2BC300E2A18C /* Response */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		15E40D0027DB2BC300E2A18C /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				15E40D0127DB2C1D00E2A18C /* word */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		15E40D0927DB2EAA00E2A18C /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				15E40D0A27DB2EED00E2A18C /* Endpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		15E40D1327DB351600E2A18C /* NetworkingExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				15E40D1B27DB354700E2A18C /* ContentViewModel */,
+			);
+			path = NetworkingExampleTests;
+			sourceTree = "<group>";
+		};
+		15E40D1B27DB354700E2A18C /* ContentViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15E40D1C27DB356000E2A18C /* ContentViewModelTests.swift */,
+			);
+			path = ContentViewModel;
+			sourceTree = "<group>";
+		};
 		EF9876AF263CC3F000E7C3EE = {
 			isa = PBXGroup;
 			children = (
 				EF9876BB263CC3F000E7C3EE /* Networking */,
 				EF9876C6263CC3F000E7C3EE /* NetworkingTests */,
 				EF9876DA263CC40800E7C3EE /* NetworkingExample */,
+				15E40D1327DB351600E2A18C /* NetworkingExampleTests */,
 				EF9876BA263CC3F000E7C3EE /* Products */,
 				EF98775A263CCBC400E7C3EE /* Frameworks */,
 			);
@@ -245,6 +373,7 @@
 				EF9876B9263CC3F000E7C3EE /* Networking.framework */,
 				EF9876C2263CC3F000E7C3EE /* NetworkingTests.xctest */,
 				EF9876D9263CC40800E7C3EE /* NetworkingExample.app */,
+				15E40D1227DB351600E2A18C /* NetworkingExampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,10 +381,8 @@
 		EF9876BB263CC3F000E7C3EE /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				1508441C27DA86F8006EC139 /* RestClient */,
-				1508441B27DA86F0006EC139 /* Request */,
-				15C7C6A227DA941E00F55DC3 /* Response */,
-				1508441D27DA8710006EC139 /* Model */,
+				15E40CF427DB18CF00E2A18C /* Base */,
+				15E40CF527DB18DD00E2A18C /* Common */,
 				15C7C6A527DA947700F55DC3 /* Resource */,
 			);
 			path = Networking;
@@ -326,6 +453,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		15E40D1127DB351600E2A18C /* NetworkingExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15E40D1827DB351600E2A18C /* Build configuration list for PBXNativeTarget "NetworkingExampleTests" */;
+			buildPhases = (
+				15E40D0E27DB351600E2A18C /* Sources */,
+				15E40D0F27DB351600E2A18C /* Frameworks */,
+				15E40D1027DB351600E2A18C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15E40D1727DB351600E2A18C /* PBXTargetDependency */,
+			);
+			name = NetworkingExampleTests;
+			productName = NetworkingExampleTests;
+			productReference = 15E40D1227DB351600E2A18C /* NetworkingExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EF9876B8263CC3F000E7C3EE /* Networking */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF9876CD263CC3F000E7C3EE /* Build configuration list for PBXNativeTarget "Networking" */;
@@ -359,6 +504,7 @@
 			);
 			dependencies = (
 				EF9876C5263CC3F000E7C3EE /* PBXTargetDependency */,
+				15E40D0D27DB34B900E2A18C /* PBXTargetDependency */,
 			);
 			name = NetworkingTests;
 			productName = NetworkingTests;
@@ -378,6 +524,7 @@
 			);
 			dependencies = (
 				15C7C69E27DA934E00F55DC3 /* PBXTargetDependency */,
+				15E40D0827DB2DAB00E2A18C /* PBXTargetDependency */,
 			);
 			name = NetworkingExample;
 			productName = NetworkingExample;
@@ -390,11 +537,18 @@
 		EF9876B0263CC3F000E7C3EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					155AC6E227DA6C4F0034D1F7 = {
 						CreatedOnToolsVersion = 13.0;
+					};
+					15E40D0227DB2C7000E2A18C = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					15E40D1127DB351600E2A18C = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = EF9876D8263CC40800E7C3EE;
 					};
 					EF9876B8263CC3F000E7C3EE = {
 						CreatedOnToolsVersion = 12.4;
@@ -402,6 +556,7 @@
 					};
 					EF9876C1263CC3F000E7C3EE = {
 						CreatedOnToolsVersion = 12.4;
+						TestTargetID = EF9876D8263CC40800E7C3EE;
 					};
 					EF9876D8263CC40800E7C3EE = {
 						CreatedOnToolsVersion = 12.4;
@@ -426,12 +581,21 @@
 				EF9876B8263CC3F000E7C3EE /* Networking */,
 				EF9876C1263CC3F000E7C3EE /* NetworkingTests */,
 				EF9876D8263CC40800E7C3EE /* NetworkingExample */,
+				15E40D1127DB351600E2A18C /* NetworkingExampleTests */,
 				155AC6E227DA6C4F0034D1F7 /* SwiftLint */,
+				15E40D0227DB2C7000E2A18C /* Copy Mock API Service Response */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		15E40D1027DB351600E2A18C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EF9876B7263CC3F000E7C3EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -477,9 +641,34 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    # Relative path from the .xcodeproj which contains this script\n    swiftlint lint –config \"${SRCROOT}/.swiftlint.yml\"\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
 		};
+		15E40D0627DB2C7700E2A18C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Checking configuration to determine whether to copy MockApi/Resources: CONFIGURATION=$CONFIGURATION\"\nif [ \"${CONFIGURATION}\" = \"Debug\" ]; then\necho \"Copying ${SRCROOT}/NetworkingExample/Resource/Mock/Response directory to ${BUILT_PRODUCTS_DIR}/NetworkingExample.app\"\ncp -R ${SRCROOT}/NetworkingExample/Resource/Mock/Response/* ${BUILT_PRODUCTS_DIR}/NetworkingExample.app/\necho \"Response directory has been copied.\"\nelse\necho \"Skipped copying mock responses - not required for $CONFIGURATION configuration.\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		15E40D0E27DB351600E2A18C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15E40D1D27DB356000E2A18C /* ContentViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EF9876B5263CC3F000E7C3EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -487,7 +676,9 @@
 				15C7C6A427DA942F00F55DC3 /* Response.swift in Sources */,
 				EF9876F6263CC43F00E7C3EE /* RestClient.swift in Sources */,
 				EF9876F1263CC42C00E7C3EE /* Request.swift in Sources */,
+				15E40CFB27DB1BD800E2A18C /* Coders.swift in Sources */,
 				EF9876FB263CC45000E7C3EE /* Weak.swift in Sources */,
+				15E40CF827DB18F600E2A18C /* ResourceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +696,7 @@
 			files = (
 				EF987701263CC54000E7C3EE /* ContentViewModel.swift in Sources */,
 				EF9876DC263CC40800E7C3EE /* AppDelegate.swift in Sources */,
+				15E40D0B27DB2EED00E2A18C /* Endpoint.swift in Sources */,
 				1508441627DA855B006EC139 /* MyWordsObject.swift in Sources */,
 				EF9876DE263CC40800E7C3EE /* SceneDelegate.swift in Sources */,
 				EF98770A263CC5C900E7C3EE /* MyWordsRequest.swift in Sources */,
@@ -526,6 +718,21 @@
 			platformFilter = ios;
 			target = EF9876B8263CC3F000E7C3EE /* Networking */;
 			targetProxy = 15C7C69D27DA934E00F55DC3 /* PBXContainerItemProxy */;
+		};
+		15E40D0827DB2DAB00E2A18C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 15E40D0227DB2C7000E2A18C /* Copy Mock API Service Response */;
+			targetProxy = 15E40D0727DB2DAB00E2A18C /* PBXContainerItemProxy */;
+		};
+		15E40D0D27DB34B900E2A18C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF9876D8263CC40800E7C3EE /* NetworkingExample */;
+			targetProxy = 15E40D0C27DB34B900E2A18C /* PBXContainerItemProxy */;
+		};
+		15E40D1727DB351600E2A18C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF9876D8263CC40800E7C3EE /* NetworkingExample */;
+			targetProxy = 15E40D1627DB351600E2A18C /* PBXContainerItemProxy */;
 		};
 		EF9876C5263CC3F000E7C3EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -559,6 +766,70 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		15E40D0427DB2C7000E2A18C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		15E40D0527DB2C7000E2A18C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		15E40D1927DB351600E2A18C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.selfrise.NetworkingExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkingExample.app/NetworkingExample";
+			};
+			name = Debug;
+		};
+		15E40D1A27DB351600E2A18C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.selfrise.NetworkingExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkingExample.app/NetworkingExample";
 			};
 			name = Release;
 		};
@@ -743,6 +1014,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NetworkingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -754,6 +1026,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkingExample.app/NetworkingExample";
 			};
 			name = Debug;
 		};
@@ -761,6 +1034,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NetworkingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -772,6 +1046,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkingExample.app/NetworkingExample";
 			};
 			name = Release;
 		};
@@ -823,6 +1098,24 @@
 			buildConfigurations = (
 				155AC6E427DA6C4F0034D1F7 /* Debug */,
 				155AC6E527DA6C4F0034D1F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15E40D0327DB2C7000E2A18C /* Build configuration list for PBXAggregateTarget "Copy Mock API Service Response" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15E40D0427DB2C7000E2A18C /* Debug */,
+				15E40D0527DB2C7000E2A18C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15E40D1827DB351600E2A18C /* Build configuration list for PBXNativeTarget "NetworkingExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15E40D1927DB351600E2A18C /* Debug */,
+				15E40D1A27DB351600E2A18C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
