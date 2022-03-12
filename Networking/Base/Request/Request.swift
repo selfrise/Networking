@@ -14,6 +14,7 @@ public enum RequestMethod: String {
     case delete = "DELETE"
     case patch = "PATCH"
 }
+
 public enum ContentType: String {
     case json = "application/json"
     case formData = "multipart/form-data"
@@ -24,7 +25,6 @@ public enum ContentType: String {
 public protocol GenericRequest: Request {
     var baseUrl: String? {get}
 }
-
 
 public protocol Request {
     var method: RequestMethod { get }
