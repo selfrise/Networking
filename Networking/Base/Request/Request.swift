@@ -30,6 +30,7 @@ public protocol Request {
     var method: RequestMethod { get }
     var contentType: ContentType { get }
     var endpoint: String { get }
+    var onlyFullPathUrlWithQueries: Bool { get }
     var headerParameters: [URLQueryItem] { get }
     var pathParameters: [URLQueryItem] { get }
     var queryParameters: [URLQueryItem] { get }
@@ -55,5 +56,9 @@ public extension Request {
     
     var headerParameters: [URLQueryItem] {
         []
+    }
+    
+    var onlyFullPathUrlWithQueries: Bool {
+        false
     }
 }
