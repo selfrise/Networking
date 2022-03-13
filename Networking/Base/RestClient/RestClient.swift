@@ -67,9 +67,7 @@ public class RestClient {
         
         let mainUrl = baseUrl + request.endpoint
         var urlComponents = URLComponents(string: mainUrl)
-        if !request.onlyFullPathUrlWithQueries {
-            urlComponents?.queryItems = request.queryParameters
-        }
+        urlComponents?.queryItems = request.queryParameters
         
         guard let url = urlComponents?.url else {
             completionHandler(nil,.corruptedURL)
