@@ -10,7 +10,6 @@ import Networking
 
 protocol MyWordsServiceProtocol {
     func getMyWords(successBlock: @escaping (_ response: [MyWordsObject]?) -> (), errorBlock: @escaping (_ error: RestClient.Error) -> ())
-    
 }
 
 final class MyWordsService: MyWordsServiceProtocol {

@@ -5,7 +5,8 @@
 //  Created by Tolga YILDIRIM on 11.03.2022.
 //
 
-import Foundation
+import class Foundation.JSONEncoder
+import class Foundation.JSONDecoder
 
 public enum Coders {
     static let encoder: JSONEncoder = {

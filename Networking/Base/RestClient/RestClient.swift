@@ -57,7 +57,6 @@ public class RestClient {
         completionHandler: @escaping (S?, Error?) -> Void
     ) -> URLSessionTask? {
         
-        
         var baseUrl = ""
         if let request = request as? GenericRequest,
            let _baseUrl = request.baseUrl {
@@ -68,7 +67,9 @@ public class RestClient {
         
         let mainUrl = baseUrl + request.endpoint
         var urlComponents = URLComponents(string: mainUrl)
-        urlComponents?.queryItems = request.queryParameters
+        if !request.onlyFullPathUrlWithQueries {
+            urlComponents?.queryItems = request.queryParameters
+        }
         
         guard let url = urlComponents?.url else {
             completionHandler(nil,.corruptedURL)
@@ -86,13 +87,15 @@ public class RestClient {
                 urlRequest.setValue(parameters.value, forHTTPHeaderField: parameters.name)
             }
         }
-        
+
+#if DEBUG
         debugRequestAndHeader(
             request: request,
             urlRequest: urlRequest,
             identifier: identifier,
             body: body
         )
+#endif
         
         let task = urlSession.dataTask(with: urlRequest) { [weak self] (data, response, error) in
             let _ = identifier.map { self?.taskPool.removeValue(forKey: $0) }
@@ -155,7 +158,6 @@ public class RestClient {
                     completionHandler(response, nil)
                 } catch let error as DecodingError {
                     completionHandler(nil, .data(reason: .read(underlying: error)))
-                    
                 } catch {
                     completionHandler(nil, .other)
                 }
@@ -179,14 +181,14 @@ public class RestClient {
         completionHandler: @escaping (S?, Error?) -> Void
     ) -> URLSessionTask? {
         do {
-            if request.method == .get{
+            if request.method == .get {
                 return makeRequest(
                     identifier: nil,
                     request: request,
                     body: nil,
                     completionHandler: completionHandler
                 )
-            }else {
+            } else {
                 let body = try Coders.encoder.encode(request)
                 return makeRequest(
                     identifier: nil,
@@ -196,10 +198,10 @@ public class RestClient {
                 )
             }
         } catch let error as EncodingError {
-            completionHandler(nil,.data(reason: .write(underlying: error)))
+            completionHandler(nil, .data(reason: .write(underlying: error)))
             return nil
         } catch {
-            completionHandler(nil,.other)
+            completionHandler(nil, .other)
             return nil
         }
     }
@@ -216,7 +218,7 @@ extension RestClient {
     }
     
     public class func getBaseUrl() -> String {
-        return RestClient.baseUrl
+        RestClient.baseUrl
     }
     
     public class func setHeaderValue(header: [String: String]) {
@@ -236,6 +238,8 @@ extension RestClient {
     }
 }
 
+// MARK: - Debug Network Client
+
 private extension RestClient {
     
     func debugRequestAndHeader<Q: Request>(
@@ -244,7 +248,6 @@ private extension RestClient {
         identifier: String?,
         body: Data?
     ) {
-#if DEBUG
         printTagged("✅ ----------Request---------- ✅")
         identifier.map { printTagged("Identifier: " + $0) }
         printTagged("Method: " + request.method.rawValue + " 🚀")
@@ -265,6 +268,5 @@ private extension RestClient {
         printTagged("Header: " + header)
         body.map { String(data: $0, encoding: .utf8).map { printTagged("Body: " + $0) } }
         printTagged("-------------------------------------------------------")
-#endif
     }
 }
