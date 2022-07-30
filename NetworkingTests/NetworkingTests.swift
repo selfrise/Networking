@@ -29,4 +29,24 @@ class NetworkingTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testPostRequest() {
+        
+        let request = RegisterRequest(email: "aaa@gmail.com", password: "123456", confirmPassword: "123456")
+       
+        RestClient.default.makeRequestWithError(request: request) { (response: String?, error: RestClient.Error?, model: ErrorModel?) in
+           
+            if let _error = error{
+                //handler(.failure(_error))
+                return
+            } else if let _response = response {
+               // handler(.success(_response))
+                return
+            }
+            
+        }
+        
+        
+        
+    }
 }

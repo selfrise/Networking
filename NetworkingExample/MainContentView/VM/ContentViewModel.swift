@@ -34,4 +34,20 @@ final class ContentViewModel: ObservableObject {
             print(error)
         }
     }
+    
+    func register() {
+        let request = RegisterRequest(email: "aaa@gmail.com", password: "123456", confirmPassword: "123456")
+       
+        RestClient.default.makeRequestWithError(request: request) { (response: String?, error: RestClient.Error?, model: ErrorModel?) in
+           
+            if let _error = error{
+                //handler(.failure(_error))
+                return
+            } else if let _response = response {
+               // handler(.success(_response))
+                return
+            }
+            
+        }
+    }
 }

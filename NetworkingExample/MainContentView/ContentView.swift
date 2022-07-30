@@ -20,7 +20,7 @@ struct ContentView: View {
         VStack {
             Button("Test Request 1") {
                 
-                self.viewModel.getMyWordsList()
+                self.viewModel.register()
                 
             }.padding(.all)
             

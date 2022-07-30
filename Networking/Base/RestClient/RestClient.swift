@@ -48,7 +48,160 @@ public class RestClient {
     init(session: URLSession) {
         self.urlSession = session
     }
+ 
+    @discardableResult
+    private func makeRequestWithError<Q: Request, S: Decodable, T: Decodable>(
+        identifier: String?,
+        request: Q,
+        body: Data?,
+        completionHandler: @escaping (S?, Error?, T?) -> Void
+    ) -> URLSessionTask? {
+        
+        var baseUrl = ""
+        if let request = request as? GenericRequest,
+           let _baseUrl = request.baseUrl {
+            baseUrl = _baseUrl
+        } else {
+            baseUrl = RestClient.baseUrl
+        }
+        
+        let mainUrl = baseUrl + request.endpoint
+        var urlComponents = URLComponents(string: mainUrl)
+        if !request.onlyFullPathUrlWithQueries {
+            urlComponents?.queryItems = request.queryParameters
+        }
+        
+        guard let url = urlComponents?.url else {
+            completionHandler(nil,.corruptedURL, nil)
+            return nil
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = request.method.rawValue
+        urlRequest.httpBody = body
+        urlRequest.timeoutInterval = 30.0
+        urlRequest.allHTTPHeaderFields = RestClient.header
+        urlRequest.setValue(request.contentType.rawValue, forHTTPHeaderField: "Content-Type")
+        if !request.headerParameters.isEmpty {
+            for parameters in request.headerParameters {
+                urlRequest.setValue(parameters.value, forHTTPHeaderField: parameters.name)
+            }
+        }
+
+#if DEBUG
+        debugRequestAndHeader(
+            request: request,
+            urlRequest: urlRequest,
+            identifier: identifier,
+            body: body
+        )
+#endif
+        
+        let task = urlSession.dataTask(with: urlRequest) { [weak self] (data, response, error) in
+            let _ = identifier.map { self?.taskPool.removeValue(forKey: $0) }
+            
+#if DEBUG
+            printTagged("✅ <----------Response----------> ✅")
+            identifier.map { printTagged("Identifier: " + $0) }
+            printTagged("Method: " + request.method.rawValue)
+            printTagged("URL: " + url.absoluteString)
+            
+            defer {
+                printTagged("-------------------------------------------------------")
+            }
+#endif
+            
+            if let error = error {
+#if DEBUG
+                printTagged("🚫Connection Error: " + error.localizedDescription)
+#endif
+                
+                completionHandler(nil, .connection(reason: error), nil)
+                
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+#if DEBUG
+                printTagged("🚫     !!!NO RESPONSE!!!     ")
+#endif
+                
+                completionHandler(nil, .other, nil)
+                
+                return
+            }
+            
+            if response.statusCode < 200 || response.statusCode >= 400 {
+#if DEBUG
+                printTagged("🚫HTTP Error: " + String(describing: response.statusCode))
+#endif
+                guard let data = data else {
+#if DEBUG
+                    printTagged("🚫       !!!NO DATA!!!       ")
+#endif
+                    
+                    completionHandler(nil, .data(reason: .missing), nil)
+                    
+                    return
+                }
+#if DEBUG
+                printTagged("-------------------------------------------------------")
+                printTagged("Response: " + (String(data: data, encoding: .utf8) ?? "CORRUPTED"))
+                ResourceManager.saveResponseToDevice(data: data, for: request.endpoint)
+#endif
+  
+                do {
+                    let _response = try Coders.decoder.decode(T.self, from: data)
+                    
+                    completionHandler(nil, RestClient.Error.http(code: response.statusCode), _response)
+                } catch let error as DecodingError {
+                   // let _response = try Coders.decoder.decode(T.self, from: data)
+                    completionHandler(nil, .data(reason: .read(underlying: error)), nil)
+                } catch {
+                    completionHandler(nil, .other, nil)
+                }
+                
+//                completionHandler(nil, .http(code: response.statusCode))
+            } else {
+                guard let data = data else {
+#if DEBUG
+                    printTagged("🚫       !!!NO DATA!!!       ")
+#endif
+                    
+                    completionHandler(nil, .data(reason: .missing), nil)
+                    
+                    return
+                }
+                
+#if DEBUG
+                printTagged("-------------------------------------------------------")
+                printTagged("Response: " + (String(data: data, encoding: .utf8) ?? "CORRUPTED"))
+                ResourceManager.saveResponseToDevice(data: data, for: request.endpoint)
+#endif
+                do {
+                    let response = try Coders.decoder.decode(S.self, from: data)
+                    completionHandler(response, nil, nil)
+                } catch let error as DecodingError {
+                   // let _response = try Coders.decoder.decode(T.self, from: data)
+                    completionHandler(nil, .data(reason: .read(underlying: error)), nil)
+                } catch {
+                    completionHandler(nil, .other, nil)
+                }
+            }
+        }
+        
+        if let identifier = identifier, !identifier.isEmpty {
+            if taskPool.keys.contains(identifier) {
+                completionHandler(nil, .existingIdentifier, nil)
+                return nil
+            }
+        }
+        
+        task.resume()
+        return task
+    }
     
+ 
     @discardableResult
     private func makeRequest<Q: Request, S: Decodable>(
         identifier: String?,
@@ -202,6 +355,27 @@ public class RestClient {
             return nil
         } catch {
             completionHandler(nil, .other)
+            return nil
+        }
+    }
+    
+    @discardableResult
+    public func makeRequestWithError<Q: Request & Encodable, S: Decodable, T: Decodable>(
+        request: Q,
+        completionHandler: @escaping (S?, Error?, T?) -> Void
+    ) -> URLSessionTask? {
+        do {
+            if request.method == .get {
+                return makeRequestWithError(identifier: nil, request: request, body: nil, completionHandler: completionHandler)
+            } else {
+                let body = try Coders.encoder.encode(request)
+                return makeRequestWithError(identifier: nil, request: request, body: body, completionHandler: completionHandler)
+            }
+        } catch let error as EncodingError {
+            completionHandler(nil, .data(reason: .write(underlying: error)), nil)
+            return nil
+        } catch {
+            completionHandler(nil, .other, nil)
             return nil
         }
     }

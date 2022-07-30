@@ -42,6 +42,8 @@
 		15E40CFB27DB1BD800E2A18C /* Coders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E40CFA27DB1BD800E2A18C /* Coders.swift */; };
 		15E40D0B27DB2EED00E2A18C /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E40D0A27DB2EED00E2A18C /* Endpoint.swift */; };
 		15E40D1D27DB356000E2A18C /* ContentViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E40D1C27DB356000E2A18C /* ContentViewModelTests.swift */; };
+		36DA621F28953E6300C2F9BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36DA621E28953E6300C2F9BA /* Foundation.framework */; };
+		36DA62202895401F00C2F9BA /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DC57D8289530D700EF6606 /* RegisterService.swift */; };
 		EF9876C3263CC3F000E7C3EE /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9876B9263CC3F000E7C3EE /* Networking.framework */; };
 		EF9876C8263CC3F000E7C3EE /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876C7263CC3F000E7C3EE /* NetworkingTests.swift */; };
 		EF9876DC263CC40800E7C3EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9876DB263CC40800E7C3EE /* AppDelegate.swift */; };
@@ -126,6 +128,8 @@
 		15E40D0A27DB2EED00E2A18C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		15E40D1227DB351600E2A18C /* NetworkingExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E40D1C27DB356000E2A18C /* ContentViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModelTests.swift; sourceTree = "<group>"; };
+		36DA621E28953E6300C2F9BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		36DC57D8289530D700EF6606 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		EF9876B9263CC3F000E7C3EE /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF9876BC263CC3F000E7C3EE /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		EF9876C2263CC3F000E7C3EE /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36DA621F28953E6300C2F9BA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +357,13 @@
 			path = ContentViewModel;
 			sourceTree = "<group>";
 		};
+		36DC57D7289530C800EF6606 /* Post Example */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Post Example";
+			sourceTree = "<group>";
+		};
 		EF9876AF263CC3F000E7C3EE = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +400,7 @@
 		EF9876C6263CC3F000E7C3EE /* NetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
+				36DC57D7289530C800EF6606 /* Post Example */,
 				EF9876C7263CC3F000E7C3EE /* NetworkingTests.swift */,
 			);
 			path = NetworkingTests;
@@ -423,6 +436,7 @@
 		EF987708263CC54500E7C3EE /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				36DC57D8289530D700EF6606 /* RegisterService.swift */,
 				EF987709263CC5C900E7C3EE /* MyWordsRequest.swift */,
 			);
 			path = Request;
@@ -431,6 +445,7 @@
 		EF98775A263CCBC400E7C3EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				36DA621E28953E6300C2F9BA /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -696,6 +711,7 @@
 				1508441627DA855B006EC139 /* MyWordsObject.swift in Sources */,
 				EF9876DE263CC40800E7C3EE /* SceneDelegate.swift in Sources */,
 				EF98770A263CC5C900E7C3EE /* MyWordsRequest.swift in Sources */,
+				36DA62202895401F00C2F9BA /* RegisterService.swift in Sources */,
 				EF9876E0263CC40800E7C3EE /* ContentView.swift in Sources */,
 				1508442127DA897B006EC139 /* MyWordsServiceProtocol.swift in Sources */,
 			);
@@ -957,7 +973,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = "$(SRCROOT)/NetworkingExample/Resource/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -985,7 +1001,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = "$(SRCROOT)/NetworkingExample/Resource/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
