@@ -399,7 +399,7 @@ extension RestClient {
         RestClient.header = header
     }
     
-    class func appendHeaderValue(key: String, value: String) {
+    public class func appendHeaderValue(key: String, value: String) {
         if RestClient.header == nil {
             RestClient.header = [String: String]()
         }
@@ -407,7 +407,7 @@ extension RestClient {
         RestClient.header?[key] = value
     }
     
-    class func removeRequestHeaderForKey(key: String) {
+    public class func removeRequestHeaderForKey(key: String) {
         RestClient.header?.removeValue(forKey: key)
     }
 }
