@@ -44,7 +44,7 @@ public class RestClient {
     private let urlSession: URLSession
     private var taskPool: [String : Weak<URLSessionTask>] = [:]
     private static var header: [String: String]?
-    var intercepter: RestClientIntercepter?
+    public var intercepter: RestClientIntercepter?
     
     private init() {
         self.urlSession = URLSession(
