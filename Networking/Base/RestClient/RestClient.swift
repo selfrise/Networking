@@ -12,6 +12,14 @@ private func printTagged(_ string: String) {
     print("[" + tag + "] " + string)
 }
 
+protocol RestClientIntercepter {
+    
+    
+    func error(code: Int, response: Data?)
+    func success(response: Data?)
+    
+}
+
 public class RestClient {
     public enum Error: Swift.Error {
         public enum Data: Swift.Error {
@@ -36,6 +44,7 @@ public class RestClient {
     private let urlSession: URLSession
     private var taskPool: [String : Weak<URLSessionTask>] = [:]
     private static var header: [String: String]?
+    var intercepter: RestClientIntercepter?
     
     private init() {
         self.urlSession = URLSession(
@@ -125,7 +134,7 @@ public class RestClient {
 #if DEBUG
                 printTagged("🚫     !!!NO RESPONSE!!!     ")
 #endif
-                
+                self?.intercepter?.error(code: 0, response: nil)
                 completionHandler(nil, .other, nil)
                 
                 return
@@ -139,7 +148,7 @@ public class RestClient {
 #if DEBUG
                     printTagged("🚫       !!!NO DATA!!!       ")
 #endif
-                    
+                    self?.intercepter?.error(code: response.statusCode, response: nil)
                     completionHandler(nil, .data(reason: .missing), nil)
                     
                     return
@@ -153,11 +162,14 @@ public class RestClient {
                 do {
                     let _response = try Coders.decoder.decode(T.self, from: data)
                     
+                    self?.intercepter?.error(code: response.statusCode, response: data)
                     completionHandler(nil, RestClient.Error.http(code: response.statusCode), _response)
                 } catch let error as DecodingError {
                    // let _response = try Coders.decoder.decode(T.self, from: data)
+                    self?.intercepter?.error(code: response.statusCode, response: nil)
                     completionHandler(nil, .data(reason: .read(underlying: error)), nil)
                 } catch {
+                    self?.intercepter?.error(code: response.statusCode, response: nil)
                     completionHandler(nil, .other, nil)
                 }
                 
@@ -167,7 +179,7 @@ public class RestClient {
 #if DEBUG
                     printTagged("🚫       !!!NO DATA!!!       ")
 #endif
-                    
+                    self?.intercepter?.error(code: response.statusCode, response: nil)
                     completionHandler(nil, .data(reason: .missing), nil)
                     
                     return
@@ -180,11 +192,14 @@ public class RestClient {
 #endif
                 do {
                     let response = try Coders.decoder.decode(S.self, from: data)
+                    self?.intercepter?.success(response: data)
                     completionHandler(response, nil, nil)
                 } catch let error as DecodingError {
                    // let _response = try Coders.decoder.decode(T.self, from: data)
+                    self?.intercepter?.error(code: response.statusCode, response: nil)
                     completionHandler(nil, .data(reason: .read(underlying: error)), nil)
                 } catch {
+                    self?.intercepter?.error(code: response.statusCode, response: nil)
                     completionHandler(nil, .other, nil)
                 }
             }
@@ -192,6 +207,7 @@ public class RestClient {
         
         if let identifier = identifier, !identifier.isEmpty {
             if taskPool.keys.contains(identifier) {
+                
                 completionHandler(nil, .existingIdentifier, nil)
                 return nil
             }
@@ -366,10 +382,10 @@ public class RestClient {
     ) -> URLSessionTask? {
         do {
             if request.method == .get {
-                return makeRequestWithError(identifier: nil, request: request, body: nil, completionHandler: completionHandler)
+                return makeRequestWithError(identifier: request.endpoint, request: request, body: nil, completionHandler: completionHandler)
             } else {
                 let body = try Coders.encoder.encode(request)
-                return makeRequestWithError(identifier: nil, request: request, body: body, completionHandler: completionHandler)
+                return makeRequestWithError(identifier: request.endpoint, request: request, body: body, completionHandler: completionHandler)
             }
         } catch let error as EncodingError {
             completionHandler(nil, .data(reason: .write(underlying: error)), nil)
