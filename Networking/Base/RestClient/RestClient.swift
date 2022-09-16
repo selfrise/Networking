@@ -12,7 +12,7 @@ private func printTagged(_ string: String) {
     print("[" + tag + "] " + string)
 }
 
-protocol RestClientIntercepter {
+public protocol RestClientIntercepter {
     
     
     func error(code: Int, response: Data?)
@@ -392,12 +392,15 @@ public class RestClient {
             return nil
         } catch {
             completionHandler(nil, .other, nil)
+            
             return nil
         }
+        
     }
     
     func cancelRequest(identifier: String) {
         taskPool[identifier]?.object?.cancel()
+        
     }
 }
 
