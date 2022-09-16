@@ -15,7 +15,7 @@ private func printTagged(_ string: String) {
 public protocol RestClientIntercepter {
     
     
-    func error(code: Int, response: Data?)
+    func error(code: Int, response: Data?, identifier: String?)
     func success(response: Data?)
     
 }
@@ -134,7 +134,7 @@ public class RestClient {
 #if DEBUG
                 printTagged("🚫     !!!NO RESPONSE!!!     ")
 #endif
-                self?.intercepter?.error(code: 0, response: nil)
+                self?.intercepter?.error(code: 0, response: nil,identifier: identifier)
                 completionHandler(nil, .other, nil)
                 
                 return
@@ -148,7 +148,7 @@ public class RestClient {
 #if DEBUG
                     printTagged("🚫       !!!NO DATA!!!       ")
 #endif
-                    self?.intercepter?.error(code: response.statusCode, response: nil)
+                    self?.intercepter?.error(code: response.statusCode, response: nil,identifier: identifier)
                     completionHandler(nil, .data(reason: .missing), nil)
                     
                     return
@@ -162,14 +162,14 @@ public class RestClient {
                 do {
                     let _response = try Coders.decoder.decode(T.self, from: data)
                     
-                    self?.intercepter?.error(code: response.statusCode, response: data)
+                    self?.intercepter?.error(code: response.statusCode, response: data, identifier: identifier)
                     completionHandler(nil, RestClient.Error.http(code: response.statusCode), _response)
                 } catch let error as DecodingError {
                    // let _response = try Coders.decoder.decode(T.self, from: data)
-                    self?.intercepter?.error(code: response.statusCode, response: nil)
+                    self?.intercepter?.error(code: response.statusCode, response: nil, identifier: identifier)
                     completionHandler(nil, .data(reason: .read(underlying: error)), nil)
                 } catch {
-                    self?.intercepter?.error(code: response.statusCode, response: nil)
+                    self?.intercepter?.error(code: response.statusCode, response: nil, identifier: identifier)
                     completionHandler(nil, .other, nil)
                 }
                 
@@ -179,7 +179,7 @@ public class RestClient {
 #if DEBUG
                     printTagged("🚫       !!!NO DATA!!!       ")
 #endif
-                    self?.intercepter?.error(code: response.statusCode, response: nil)
+                    self?.intercepter?.error(code: response.statusCode, response: nil, identifier: identifier)
                     completionHandler(nil, .data(reason: .missing), nil)
                     
                     return
@@ -196,10 +196,10 @@ public class RestClient {
                     completionHandler(response, nil, nil)
                 } catch let error as DecodingError {
                    // let _response = try Coders.decoder.decode(T.self, from: data)
-                    self?.intercepter?.error(code: response.statusCode, response: nil)
+                    self?.intercepter?.error(code: response.statusCode, response: nil, identifier: identifier)
                     completionHandler(nil, .data(reason: .read(underlying: error)), nil)
                 } catch {
-                    self?.intercepter?.error(code: response.statusCode, response: nil)
+                    self?.intercepter?.error(code: response.statusCode, response: nil, identifier: identifier)
                     completionHandler(nil, .other, nil)
                 }
             }
@@ -352,7 +352,7 @@ public class RestClient {
         do {
             if request.method == .get {
                 return makeRequest(
-                    identifier: nil,
+                    identifier: request.endpoint,
                     request: request,
                     body: nil,
                     completionHandler: completionHandler
@@ -360,7 +360,7 @@ public class RestClient {
             } else {
                 let body = try Coders.encoder.encode(request)
                 return makeRequest(
-                    identifier: nil,
+                    identifier: request.endpoint,
                     request: request,
                     body: body,
                     completionHandler: completionHandler
